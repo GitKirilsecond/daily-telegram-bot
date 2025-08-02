@@ -1,9 +1,9 @@
 name: Telegram Daily Bot
 
 on:
-  schedule:
-    - cron: '0 6 * * *'  # 06:00 UTC = 09:00 за Києвом
   workflow_dispatch:      # дозволяє запуск вручну
+  schedule:
+    - cron: '*/1 * * * *'  # кожну хвилину для тесту (можна змінити на 6:00 UTC)
 
 jobs:
   run-bot:
@@ -21,4 +21,4 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run bot
-        run: python main.py
+        run: python test.py
