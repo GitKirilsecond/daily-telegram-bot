@@ -1,15 +1,13 @@
 import telebot
-from datetime import datetime
+import datetime
 
 BOT_TOKEN = '8259339256:AAFLtjDITQTo1-W2yigShG7QSMW1vzICMgI'
 CHANNEL_USERNAME = '@testtgforme'
 
 bot = telebot.TeleBot(BOT_TOKEN)
+now = datetime.datetime.now()
 
-try:
-    now = datetime.now().strftime('%H:%M:%S')
-    message = f"[{now}] я працюю автоматично"
-    bot.send_message(CHANNEL_USERNAME, message)
-    print(f"✅ Повідомлення надіслано: {message}")
-except Exception as e:
-    print(f"❌ Помилка: {e}")
+# Якщо зараз між 13:30 і 14:30 — надсилаємо повідомлення кожні 5 хвилин
+if now.hour == 13 and 30 <= now.minute <= 59:
+    msg = now.strftime("[%H:%M:%S]") + " 🧪 Тест кожні 5 хв"
+    bot.send_message(CHANNEL_USERNAME, msg)
