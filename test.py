@@ -16,6 +16,6 @@ def send_message(text):
 # Тест: 5 повідомлень з інтервалом 10 хв
 for i in range(5):
     now = datetime.now().strftime("%H:%M:%S")
-    send_message(f"[{now}] Тестове повідомлення #{i+1}")
+    send_message(f"[{now}] Абоба #{i+1}")
     if i < 4:
         time.sleep(600)  # 10 хвилин = 600 секунд
